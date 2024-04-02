@@ -1,8 +1,9 @@
 <?php
 require './elements/header.php';
 $erreur = null;
+$password = '$2y$12$zg7fQ9GrYpF8dWGKBp/SkOyQAc6bW0ioBc0W0pe5Pc51EQH7AR.5C';
 if (!empty($_POST['username']) && !empty($_POST['motdepasse'])) {
-    if ($_POST['username'] === 'Rakoto' && $_POST['motdepasse'] === 'admin') {
+    if ($_POST['username'] === 'Rakoto' && password_verify($_POST['motdepasse'], $password)) {
         session_start();
         $_SESSION['connecte'] = 1;
         header('Location: ./dashboard.php');
